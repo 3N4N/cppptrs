@@ -3,7 +3,7 @@
 #include <boost/make_shared.hpp>
 #include <memory>
 
-using namespace std;
+// using namespace std;
 
 class Animal {
 public:
@@ -35,11 +35,14 @@ public:
   }
 };
 
+
 typedef boost::shared_ptr<Animal> AnimalPtr;
 typedef boost::shared_ptr<Dog> DogPtr;
 
+
 int main()
 {
+
   AnimalPtr ap = boost::make_shared<Animal>();
   ap->speak();
 
@@ -47,9 +50,10 @@ int main()
   dp->speak();
 
   AnimalPtr ap1 = static_pointer_cast<Animal>(dp);
-  // DogPtr dp1 = dynamic_pointer_cast<Dog>(ap1); // needs polymorphic base
-  // DogPtr dp1 = boost::dynamic_cast<Dog&>(ap1);
-  // dp1->speak();
+  DogPtr dp1 = dynamic_pointer_cast<Dog>(ap1);  // needs polymorphic base
+  // AnimalPtr ap1 = boost::static_pointer_cast<Animal>(dp);
+  // DogPtr dp1 = boost::dynamic_pointer_cast<Dog>(ap1);  // needs polymorphic base
+  dp1->speak();
 
   return 0;
 }

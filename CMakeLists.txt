@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.16)
 project(cpptrs)
 
 set(target a.out)
@@ -8,6 +8,7 @@ file(GLOB SOURCES "src/*.cpp")
 # add_executable(${executable} ${SOURCES})
 
 
+# add_executable(a.out src/withstd.cc)
 add_executable(a.out src/withboost.cc)
 
 set_target_properties(${executable}

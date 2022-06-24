@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>
 
-using namespace std;
+// using namespace std;
 
 class Animal {
 public:
@@ -14,7 +14,7 @@ public:
   {}
   void speak()
   {
-    cout << "I am an animal\n";
+    std::cout << "I am an animal\n";
   }
 };
 
@@ -24,7 +24,7 @@ public:
   {}
   void bark()
   {
-    cout << "Gheu --> ";
+    std::cout << "Gheu --> ";
   }
   void speak()
   {
@@ -38,14 +38,14 @@ typedef std::shared_ptr<Dog> DogPtr;
 
 int main()
 {
-  AnimalPtr ap = make_shared<Animal>();
+  AnimalPtr ap = std::make_shared<Animal>();
   ap->speak();
 
-  DogPtr dp = make_shared<Dog>();
+  DogPtr dp = std::make_shared<Dog>();
   dp->speak();
 
-  AnimalPtr ap1 = static_pointer_cast<Animal>(dp);
-  DogPtr dp1 = dynamic_pointer_cast<Dog>(ap1); // needs polymorphic base
+  AnimalPtr ap1 = std::static_pointer_cast<Animal>(dp);
+  DogPtr dp1 = std::dynamic_pointer_cast<Dog>(ap1); // needs polymorphic base
   dp1->speak();
 
   return 0;
