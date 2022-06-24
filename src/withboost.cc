@@ -3,7 +3,9 @@
 #include <boost/make_shared.hpp>
 #include <memory>
 
-// using namespace std;
+using namespace std;
+// using boost::static_pointer_cast;
+// using boost::dynamic_pointer_cast;
 
 class Animal {
 public:
@@ -53,7 +55,10 @@ int main()
   DogPtr dp1 = dynamic_pointer_cast<Dog>(ap1);  // needs polymorphic base
   // AnimalPtr ap1 = boost::static_pointer_cast<Animal>(dp);
   // DogPtr dp1 = boost::dynamic_pointer_cast<Dog>(ap1);  // needs polymorphic base
-  dp1->speak();
+
+  Dog *p = dynamic_cast<Dog *>(ap1.get());
+  DogPtr dp2 = DogPtr(ap1, p);
+  dp2->speak();
 
   return 0;
 }
